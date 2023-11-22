@@ -1,0 +1,37 @@
+﻿<h2>Hello myself Manoj, </h2>
+<h3>I'm so Elegantttt-So Boootifullllll-Just looking like a WOW !!!! XD</h3>
+
+<img height="300" src="https://th.bing.com/th/id/OIP.xFm9DyJ51ZuZWLNYkPcUJwHaEK?w=264&h=180&c=7&r=0&o=5&pid=1.7" width="800">
+<h1>M</h1>
+<h2>A</h2>
+<h3>N</h3>
+<h4>U</h4>
+<hr />
+<h5>Alias Manoj </h5>
+<hr />
+@{
+    var message = "Hello Manoj";
+}
+<input type="text" value=@message/>
+<br />
+<button onclick="alert('Ok')">Ok</button>
+<span style="background-color:yellow;color:Black">@ViewBag.ReturnValue</span>
+<hr />
+
+@{
+    List<string> names = new List<string>();
+    names.Add("Rana");
+    names.Add("Vana");
+    names.Add("Pana");
+}
+<table>
+    <tr>
+        <td>Name</td>
+    </tr>
+@foreach(var name in names)
+{
+    <tr><td>
+    @Html.DisplayFor(n=>name)
+    </td></tr>
+}
+</table>

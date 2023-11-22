@@ -1,0 +1,53 @@
+﻿@model IEnumerable<EmpDAL.Employee1>
+
+@{
+    ViewData["Title"] = "dbview";
+}
+
+<h1>dbview</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.EmpName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Salary)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DOB)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsActive)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmpName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Salary)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DOB)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActive)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.EmpId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.EmpId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.EmpId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
