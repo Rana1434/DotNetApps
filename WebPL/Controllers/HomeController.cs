@@ -1,32 +1,54 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
-using WebPL.Models;
+﻿using System.Diagnostics;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using DalLib;
 
-namespace WebPL.Controllers
+namespace Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly SSDbContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(SSDbContext context)
         {
-            _logger = logger;
+            _context = context;
         }
-
         public IActionResult Index()
         {
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult About()
         {
+            ViewData["Message"] = "Write your description here...";
+
             return View();
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        public IActionResult Contact()
+        {
+            ViewData["Message"] = "Contact";
+
+            return View();
+        }
+
+        public async Task<IActionResult> Men()
+        {
+            ViewData["Message"] = "category - Men";
+
+            return View(await _context.Shoes.ToListAsync());
+        }
+            
+        public async Task<IActionResult> Women()
+        {
+            ViewData["Message"] = "category  - Women";
+
+            return View(await _context.Shoes.ToListAsync());
+        }
+        /*public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+        }*/
+        
     }
 }
